@@ -1,0 +1,3 @@
+
+{% extends "base.html" %}{% block content %}<h1>Billing / Checkout</h1>
+<div class="panel"><table><tr><th>Booking</th><th>Customer</th><th>Phone</th><th>Room</th><th>Price</th><th>Checkin</th><th>Checkout</th><th>Action</th></tr>{% for b in bookings %}<tr><td>{{b.id}}</td><td>{{b.name}}</td><td>{{b.phone}}</td><td>{{b.room_no}} {{b.category}}</td><td>₹{{b.price}}</td><td>{{b.checkin}}</td><td>{{b.checkout}}</td><td><form method="post" action="{{url_for('checkout', id=b.id)}}"><input name="discount" value="0" placeholder="Discount"><button>Checkout</button></form></td></tr>{% endfor %}</table></div>{% endblock %}

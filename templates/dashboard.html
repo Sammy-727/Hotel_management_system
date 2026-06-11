@@ -1,0 +1,7 @@
+
+{% extends "base.html" %}{% block content %}<h1>Dashboard</h1>
+<div class="cards">{% for k,v in stats.items() %}<div class="card"><span>{{ k.replace("_"," ").title() }}</span><h2>{% if k=="revenue" %}₹{{"%.2f"|format(v)}}{% else %}{{v}}{% endif %}</h2></div>{% endfor %}</div>
+<div class="grid"><div class="panel"><h3>Room Status</h3>{% for r in room_status %}<p>{{r.status}}: <b>{{r.count}}</b></p>{% endfor %}</div>
+<div class="panel"><h3>Low Stock</h3><table><tr><th>Item</th><th>Qty</th><th>Reorder</th></tr>{% for i in low_stock %}<tr><td>{{i.item_name}}</td><td>{{i.quantity}}</td><td>{{i.reorder_level}}</td></tr>{% endfor %}</table></div></div>
+<div class="panel"><h3>Recent Bookings</h3><table><tr><th>ID</th><th>Customer</th><th>Room</th><th>Checkin</th><th>Checkout</th><th>Status</th></tr>{% for b in recent %}<tr><td>{{b.id}}</td><td>{{b.name}}</td><td>{{b.room_no}} {{b.category}}</td><td>{{b.checkin}}</td><td>{{b.checkout}}</td><td>{{b.status}}</td></tr>{% endfor %}</table></div>
+{% endblock %}
